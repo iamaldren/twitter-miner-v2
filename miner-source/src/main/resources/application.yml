@@ -1,0 +1,10 @@
+miner:
+  source:
+    twitter:
+      consumer:
+        key: "test"
+        secret: "test"
+      access:
+        token: "test"
+        secret: "test"
+      keyword: "MCU"
