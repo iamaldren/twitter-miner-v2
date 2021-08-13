@@ -27,6 +27,7 @@
     <modules>
         <module>miner-source</module>
         <module>miner-processor</module>
+        <module>miner-sink</module>
     </modules>
 
     <dependencies>
