@@ -28,6 +28,3 @@ miner:
         token: "test"
         secret: "test"
       keyword: "MCU"
-
-  kafka:
-    host: 127.0.0.1:29092
