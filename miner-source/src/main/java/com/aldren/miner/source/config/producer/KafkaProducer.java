@@ -1,4 +1,4 @@
-package com.aldren.miner.source.producer;
+package com.aldren.miner.source.config.producer;
 
 import com.aldren.miner.source.properties.MinerSourceProperties;
 import com.aldren.miner.source.service.TwitterService;
