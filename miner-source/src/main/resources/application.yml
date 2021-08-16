@@ -1,3 +1,23 @@
+spring:
+  application:
+    name: twitter-miner-source
+  cloud:
+    stream:
+      function:
+        definition: tweets
+      bindings:
+        tweets-out-0:
+          destination: mined_tweets
+      kafka:
+        binder:
+          brokers: 127.0.0.1:29092
+        bindings:
+          tweets-out-0:
+            producer:
+              configuration:
+                value:
+                  serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 miner:
   source:
     twitter:
@@ -8,3 +28,6 @@ miner:
         token: "test"
         secret: "test"
       keyword: "MCU"
+
+  kafka:
+    host: 127.0.0.1:29092

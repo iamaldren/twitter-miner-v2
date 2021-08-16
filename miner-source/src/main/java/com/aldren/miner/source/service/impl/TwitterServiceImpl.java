@@ -32,11 +32,11 @@ public class TwitterServiceImpl implements TwitterService {
     }
 
     @Override
-    public void mineTweets(String keyword) {
+    public List<Tweet> mineTweets(String keyword) {
         log.info("Tweet mining started.");
 
         SearchResults results = twitter.searchOperations().search(String.format("#%s", keyword), 10);
-        List<Tweet> tweets = results.getTweets();
+        return results.getTweets();
     }
 
 }
