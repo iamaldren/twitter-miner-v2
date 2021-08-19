@@ -11,7 +11,7 @@ spring:
         consumer:
           useNativeEncoding: true
       function:
-        definition: minedTweets, processedTweets
+        definition: processedTweets;minedTweets
       bindings:
         minedTweets-in-0:
           destination: mined_tweets

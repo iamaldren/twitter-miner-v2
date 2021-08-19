@@ -18,12 +18,12 @@ public class SentimentServiceImpl implements SentimentService {
     private StanfordCoreNLP pipeline;
 
     @Override
-    public int analyzeSentiment(String tweet) {
+    public int analyzeSentiment(String text) {
         AtomicInteger sentiment = new AtomicInteger(0);
 
-        if(tweet != null && !tweet.isEmpty()) {
+        if(text != null && !text.isEmpty()) {
             AtomicInteger longest = new AtomicInteger(0);
-            pipeline.process(tweet).get(CoreAnnotations.SentencesAnnotation.class)
+            pipeline.process(text).get(CoreAnnotations.SentencesAnnotation.class)
                     .stream()
                     .forEach(sentence -> {
                         Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);

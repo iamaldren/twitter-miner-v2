@@ -1,9 +1,9 @@
 package com.aldren.miner.processor.service;
 
-import org.springframework.social.twitter.api.Tweet;
+import com.aldren.miner.processor.model.ParsedTweet;
 
 public interface ProcessorService {
 
-    void processTweets(Tweet tweet);
+    void processTweets(ParsedTweet tweet);
 
 }

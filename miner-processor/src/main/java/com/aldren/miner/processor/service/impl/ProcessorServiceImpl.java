@@ -1,14 +1,16 @@
 package com.aldren.miner.processor.service.impl;
 
+import com.aldren.miner.processor.model.ParsedTweet;
 import com.aldren.miner.processor.model.TweetSentiment;
 import com.aldren.miner.processor.service.ProcessorService;
 import com.aldren.miner.processor.service.SentimentService;
 import lombok.AllArgsConstructor;
-import org.springframework.social.twitter.api.Tweet;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Queue;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class ProcessorServiceImpl implements ProcessorService {
@@ -17,15 +19,21 @@ public class ProcessorServiceImpl implements ProcessorService {
     private Queue<TweetSentiment> tweetSentimentQueue;
 
     @Override
-    public void processTweets(Tweet tweet) {
-        int sentiment = sentimentService.analyzeSentiment(tweet.getText());
+    public void processTweets(ParsedTweet tweet) {
+        String str = tweet.getTweet();
+        int sentiment = sentimentService.analyzeSentiment(str);
 
-        tweetSentimentQueue.add(TweetSentiment.builder()
-                .tweet(tweet.getText())
-                .user(tweet.getFromUser())
-                .retweetCount(tweet.getRetweetCount())
-                .favoriteCount(tweet.getFavoriteCount())
-                .sentiment(sentiment).build());
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Tweet by " + tweet.getUser() + " with sentiment of " + sentiment);
+        if(sentiment != -2) {
+            TweetSentiment tweetSentiment = new TweetSentiment();
+            tweetSentiment.setTweet(tweet.getTweet());
+            tweetSentiment.setUser(tweet.getUser());
+            tweetSentiment.setRetweetCount(tweet.getRetweetCount());
+            tweetSentiment.setFavoriteCount(tweet.getFavoriteCount());
+            tweetSentiment.setSentiment(Double.valueOf(sentiment));
+
+            tweetSentimentQueue.add(tweetSentiment);
+        }
     }
 
 }
