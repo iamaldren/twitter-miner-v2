@@ -3,20 +3,23 @@ spring:
     name: twitter-miner-source
   cloud:
     stream:
+      default:
+        producer:
+          useNativeEncoding: true
+        consumer:
+          useNativeEncoding: true
       function:
         definition: tweets
       bindings:
         tweets-out-0:
           destination: mined_tweets
+          content-type: application/json
       kafka:
         binder:
           brokers: 127.0.0.1:29092
-        bindings:
-          tweets-out-0:
-            producer:
-              configuration:
-                value:
-                  serializer: org.springframework.kafka.support.serializer.JsonSerializer
+          producer-properties:
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+            value.serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 miner:
   source:
