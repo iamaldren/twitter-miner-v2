@@ -9,10 +9,13 @@ spring:
         consumer:
           useNativeEncoding: true
       function:
-        definition: minedTweets
+        definition: minedTweets, processedTweets
       bindings:
         minedTweets-in-0:
           destination: mined_tweets
+          content-type: application/json
+        processedTweets-out-0:
+          destination: processed_tweets
           content-type: application/json
       kafka:
         binder:
@@ -20,6 +23,9 @@ spring:
           consumer-properties:
             key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+          producer-properties:
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+            value.serializer: org.springframework.kafka.support.serializer.JsonSerializer
         bindings:
           minedTweets-in-0:
             consumer:

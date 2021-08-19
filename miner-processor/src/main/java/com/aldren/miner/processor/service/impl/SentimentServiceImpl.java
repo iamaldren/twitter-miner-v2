@@ -3,22 +3,19 @@ package com.aldren.miner.processor.service.impl;
 import com.aldren.miner.processor.service.SentimentService;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
-import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
 import edu.stanford.nlp.trees.Tree;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
+@AllArgsConstructor
 public class SentimentServiceImpl implements SentimentService {
 
     private StanfordCoreNLP pipeline;
-
-    public SentimentServiceImpl(StanfordCoreNLP pipeline) {
-        this.pipeline = pipeline;
-    }
 
     @Override
     public int analyzeSentiment(String tweet) {
