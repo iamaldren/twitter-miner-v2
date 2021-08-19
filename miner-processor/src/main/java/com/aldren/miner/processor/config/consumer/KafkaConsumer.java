@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.social.twitter.api.Tweet;
 
-import java.util.Queue;
 import java.util.function.Consumer;
 
 @Configuration
