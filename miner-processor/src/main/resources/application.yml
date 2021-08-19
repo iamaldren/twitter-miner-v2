@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: twitter-miner-processor
+  cloud:
+    stream:
+      default:
+        producer:
+          useNativeEncoding: true
+        consumer:
+          useNativeEncoding: true
+      function:
+        definition: minedTweets
+      bindings:
+        minedTweets-in-0:
+          destination: mined_tweets
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: 127.0.0.1:29092
+          consumer-properties:
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+        bindings:
+          minedTweets-in-0:
+            consumer:
+                spring.json.trusted.packages: '*'
