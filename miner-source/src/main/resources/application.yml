@@ -25,9 +25,9 @@ miner:
   source:
     twitter:
       consumer:
-        key: "test"
-        secret: "test"
+        key: "Vn6T3WLz4SGvPV8xSfKgWWi6l"
+        secret: "ar6rIsbry035SGyfrvqkAxxhHujLEYOO7KYRGC7d6JtDKggD5L"
       access:
-        token: "test"
-        secret: "test"
+        token: "1100723234146676739-nwo6fxx8mn3yst5F7Z8EWC2qq7v4y1"
+        secret: "fg82xYUr9sR3rTqoKgUBgREjQbMJ4iMzs9vXUyG6J1btf"
       keyword: "MCU"

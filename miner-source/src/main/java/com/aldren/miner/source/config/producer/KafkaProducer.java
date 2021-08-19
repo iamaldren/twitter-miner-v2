@@ -1,5 +1,6 @@
 package com.aldren.miner.source.config.producer;
 
+import com.aldren.miner.source.model.ParsedTweet;
 import com.aldren.miner.source.properties.MinerSourceProperties;
 import com.aldren.miner.source.service.TwitterService;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Configuration
@@ -23,7 +25,7 @@ public class KafkaProducer {
     private MinerSourceProperties minerSourceProperties;
 
     @Bean
-    public Supplier<List<Tweet>> tweets() {
+    public Supplier<List<ParsedTweet>> tweets() {
         AtomicBoolean isFirstRun = new AtomicBoolean();
         isFirstRun.set(true);
 
@@ -46,7 +48,19 @@ public class KafkaProducer {
             if(isFirstRun.get()) {
                 isFirstRun.set(false);
             }
-            return tweets;
+
+            return tweets.stream()
+                    .filter(tweet -> tweet.getText() != null && !tweet.getText().isEmpty())
+                    .map(tweet -> {
+                        ParsedTweet parsedTweet = new ParsedTweet();
+                        parsedTweet.setTweet(tweet.getText());
+                        parsedTweet.setUser(tweet.getFromUser());
+                        parsedTweet.setRetweetCount(tweet.getRetweetCount());
+                        parsedTweet.setFavoriteCount(tweet.getFavoriteCount());
+
+                        return parsedTweet;
+                    })
+                    .collect(Collectors.toList());
         };
     }
 
