@@ -2,10 +2,7 @@ spring:
   kafka:
     consumer:
       properties:
-        spring:
-          json:
-            trusted:
-              packages: "*"
+        spring.json.trusted.packages: "*"
   main:
     web-application-type: none
   application:
@@ -24,15 +21,11 @@ spring:
           destination: processed_tweets
           content-type: application/json
       kafka:
-        bindings:
-          tweetSentiment-in-0:
-            consumer:
-              spring.json.trusted.packages: '*'
         binder:
           brokers: 127.0.0.1:29092
           consumer-properties:
             key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
-            value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
 miner:
   sink:
