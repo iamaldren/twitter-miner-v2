@@ -1,6 +1,7 @@
 package com.aldren.miner.source.config.producer;
 
 import com.aldren.miner.model.ParsedTweet;
+import com.aldren.miner.source.mapper.TweetMapper;
 import com.aldren.miner.source.properties.MinerSourceProperties;
 import com.aldren.miner.source.service.TwitterService;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class KafkaProducer {
 
     private TwitterService twitterService;
     private MinerSourceProperties minerSourceProperties;
+    private TweetMapper tweetMapper;
 
     @Bean
     public Supplier<List<ParsedTweet>> tweets() {
@@ -51,15 +53,7 @@ public class KafkaProducer {
 
             return tweets.stream()
                     .filter(tweet -> tweet.getText() != null && !tweet.getText().isEmpty())
-                    .map(tweet -> {
-                        ParsedTweet parsedTweet = new ParsedTweet();
-                        parsedTweet.setTweet(tweet.getText());
-                        parsedTweet.setUser(tweet.getFromUser());
-                        parsedTweet.setRetweetCount(tweet.getRetweetCount());
-                        parsedTweet.setFavoriteCount(tweet.getFavoriteCount());
-
-                        return parsedTweet;
-                    })
+                    .map(tweet -> tweetMapper.tweetToParsedTweet(tweet))
                     .collect(Collectors.toList());
         };
     }
