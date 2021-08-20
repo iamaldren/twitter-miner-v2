@@ -36,7 +36,9 @@ spring:
 miner:
   processor:
     polarity:
-      userThreshold: 5
+      threshold:
+        count: 5
+        enable: true
     redis:
       host: localhost
       port: 6379

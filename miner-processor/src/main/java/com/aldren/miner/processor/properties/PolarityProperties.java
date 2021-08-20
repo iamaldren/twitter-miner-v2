@@ -13,6 +13,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "miner.processor.polarity")
 public class PolarityProperties {
 
-    private String userThreshold;
+    private Threshold threshold;
 
 }
