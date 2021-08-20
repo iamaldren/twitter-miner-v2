@@ -1,6 +1,6 @@
 package com.aldren.miner.processor.config;
 
-import com.aldren.miner.processor.model.TweetSentiment;
+import com.aldren.miner.model.TweetSentiment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,6 +1,6 @@
 package com.aldren.miner.processor.config.consumer;
 
-import com.aldren.miner.processor.model.ParsedTweet;
+import com.aldren.miner.model.ParsedTweet;
 import com.aldren.miner.processor.service.ProcessorService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

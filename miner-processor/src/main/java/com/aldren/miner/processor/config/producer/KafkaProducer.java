@@ -1,6 +1,6 @@
 package com.aldren.miner.processor.config.producer;
 
-import com.aldren.miner.processor.model.TweetSentiment;
+import com.aldren.miner.model.TweetSentiment;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;

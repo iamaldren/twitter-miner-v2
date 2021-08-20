@@ -1,7 +1,7 @@
 package com.aldren.miner.processor.service.impl;
 
-import com.aldren.miner.processor.model.ParsedTweet;
-import com.aldren.miner.processor.model.TweetSentiment;
+import com.aldren.miner.model.ParsedTweet;
+import com.aldren.miner.model.TweetSentiment;
 import com.aldren.miner.processor.service.ProcessorService;
 import com.aldren.miner.processor.service.SentimentService;
 import com.aldren.miner.processor.util.Sentiment;

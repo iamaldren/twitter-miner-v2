@@ -1,6 +1,6 @@
 package com.aldren.miner.processor.service;
 
-import com.aldren.miner.processor.model.ParsedTweet;
+import com.aldren.miner.model.ParsedTweet;
 
 public interface ProcessorService {
 

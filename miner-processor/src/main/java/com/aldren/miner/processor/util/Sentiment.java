@@ -1,5 +1,6 @@
 package com.aldren.miner.processor.util;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,22 +13,26 @@ public enum Sentiment {
     VERY_NEGATIVE("Very Negative", 0);
 
     private static final Map<String, Sentiment> BY_TEXT = new HashMap<>();
-    private static final Map<String, Sentiment> BY_POINT = new HashMap<>();
+    private static final Map<Integer, Sentiment> BY_POINT = new HashMap<>();
+
+    static {
+        Arrays.stream(values())
+                .forEach(value -> {
+                    BY_TEXT.put(value.sentimentText, value);
+                    BY_POINT.put(value.sentimentPoint, value);
+                });
+    }
 
     public final String sentimentText;
-    public final int sentimentPoint;
+    public final Integer sentimentPoint;
 
-    Sentiment(String sentimentText, int sentimentPoint) {
+    Sentiment(String sentimentText, Integer sentimentPoint) {
         this.sentimentText = sentimentText;
         this.sentimentPoint = sentimentPoint;
     }
 
     public static Sentiment getByPoint(int point) {
         return BY_POINT.get(point);
-    }
-
-    public static Sentiment getByText(String text) {
-        return BY_TEXT.get(text);
     }
 
 }
