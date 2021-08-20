@@ -35,7 +35,7 @@ public class TwitterServiceImpl implements TwitterService {
     public List<Tweet> mineTweets(String keyword) {
         log.info("Tweet mining started.");
 
-        SearchResults results = twitter.searchOperations().search(String.format("#%s", keyword), 10);
+        SearchResults results = twitter.searchOperations().search(String.format("%s", keyword));
         return results.getTweets();
     }
 

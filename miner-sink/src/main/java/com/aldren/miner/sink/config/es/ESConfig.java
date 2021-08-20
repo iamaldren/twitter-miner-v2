@@ -21,7 +21,6 @@ public class ESConfig {
     private MinerSinkProperties props;
 
     public RestHighLevelClient client() {
-        log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> props.getEs().getHost()::" + props.getEs().getHost());
         ClientConfiguration clientConfiguration = ClientConfiguration.builder()
                 .connectedTo(props.getEs().getHost())
                 .withSocketTimeout(30000L)
