@@ -1,6 +1,6 @@
 package com.aldren.miner.source.config.producer;
 
-import com.aldren.miner.source.model.ParsedTweet;
+import com.aldren.miner.model.ParsedTweet;
 import com.aldren.miner.source.properties.MinerSourceProperties;
 import com.aldren.miner.source.service.TwitterService;
 import lombok.AllArgsConstructor;
