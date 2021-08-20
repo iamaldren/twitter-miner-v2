@@ -4,8 +4,10 @@
 - Spring Boot
 - Spring Cloud Stream
 - Spring Social
+- Spring Data
 - Apache Kafka
 - StanfordCoreNLP
+- Elasticsearch
 
 ## Pending logic
 - Identify the polarity of the sentiment
