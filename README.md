@@ -15,7 +15,6 @@
 - Ingest to Kibana for graph representation of data
 
 ## What to improve
-- Use MapStruct
 - Use Spring Reactive
 - Improve Data Model generation
 - Unit tests
