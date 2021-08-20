@@ -46,6 +46,12 @@ services:
     ports:
       - 5601:5601
 
+  redis:
+    container_name: redis_container
+    image: redis
+    ports:
+      - 6379:6379
+
 networks:
   es-net:
     driver: bridge

@@ -32,3 +32,11 @@ spring:
           minedTweets-in-0:
             consumer:
                 spring.json.trusted.packages: '*'
+
+miner:
+  processor:
+    polarity:
+      userThreshold: 5
+    redis:
+      host: localhost
+      port: 6379
