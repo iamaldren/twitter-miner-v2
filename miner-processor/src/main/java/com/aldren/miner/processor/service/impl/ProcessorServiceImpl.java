@@ -30,7 +30,7 @@ public class ProcessorServiceImpl implements ProcessorService {
         String str = tweet.getTweet();
         int sentiment = sentimentService.analyzeSentiment(str);
 
-        log.info(String.format("user: %1$s; tweet: %2$s; polarity: %d", tweet.getUser(), tweet.getTweet(), sentiment));
+        log.info(String.format("user: %1$s; tweet: %2$s", tweet.getUser(), tweet.getTweet()));
 
         if(sentiment != -1) {
             TweetSentiment tweetSentiment = tweetSentimentMapper.parsedTweetToSentiment(tweet);
