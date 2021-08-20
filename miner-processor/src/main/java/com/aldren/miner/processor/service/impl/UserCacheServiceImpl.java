@@ -24,7 +24,7 @@ public class UserCacheServiceImpl implements UserCacheService {
 
         userRepository.findById(user)
                 .ifPresentOrElse((userEntity) -> {
-                    if(userEntity.getThresholdCount() >= polarityProperties.getUserThreshold()) {
+                    if(userEntity.getThresholdCount() >= polarityProperties.getThreshold().getCount()) {
                         log.info(String.format("Threshold exceeded for %s.", user));
                         isExceedThreshold.set(true);
                         return;
