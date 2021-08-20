@@ -10,7 +10,6 @@
 ## Pending logic
 - Identify the polarity of the sentiment
 - Polarity for the same users should not be counted all the time
-- miner-sink
 - Ingest to Kibana for graph representation of data
 
 ## What to improve
