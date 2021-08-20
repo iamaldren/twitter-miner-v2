@@ -4,10 +4,12 @@ import com.aldren.miner.processor.entity.User;
 import com.aldren.miner.processor.repository.UserRepository;
 import com.aldren.miner.processor.service.UserCacheService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class UserCacheServiceImpl implements UserCacheService {
@@ -21,6 +23,7 @@ public class UserCacheServiceImpl implements UserCacheService {
         userRepository.findById(user)
                 .ifPresentOrElse((userEntity) -> {
                     if(userEntity.getThresholdCount() >= 5) {
+                        log.info(String.format("Threshold exceeded for %s.", user));
                         isExceedThreshold.set(true);
                         return;
                     }

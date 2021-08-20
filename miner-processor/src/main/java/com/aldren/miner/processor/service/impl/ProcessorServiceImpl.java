@@ -19,7 +19,6 @@ import java.util.Queue;
 public class ProcessorServiceImpl implements ProcessorService {
 
     private SentimentService sentimentService;
-    private UserCacheService userCacheService;
 
     private Queue<TweetSentiment> tweetSentimentQueue;
     private TweetSentimentMapper tweetSentimentMapper;
@@ -31,7 +30,7 @@ public class ProcessorServiceImpl implements ProcessorService {
         String str = tweet.getTweet();
         int sentiment = sentimentService.analyzeSentiment(str);
 
-        if(sentiment != -1 && !userCacheService.isUserExceedThreshold(tweet.getUser())) {
+        if(sentiment != -1) {
             TweetSentiment tweetSentiment = tweetSentimentMapper.parsedTweetToSentiment(tweet);
             tweetSentiment.setPolarity(sentiment);
             tweetSentiment.setSentiment(getSentiment(sentiment));
