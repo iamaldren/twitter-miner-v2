@@ -18,11 +18,13 @@ public class KafkaProducer {
 
     @Bean
     public Supplier<TweetSentiment> processedTweets() {
+        log.info("Producing to processed_tweets topic.");
         if(tweetSentimentQueue.isEmpty()) {
             try {
+                log.warn("Queue is empty, thread will sleep.");
                 Thread.sleep(10000L);
             } catch (InterruptedException e) {
-                log.error(e.getLocalizedMessage(), e);
+                log.warn(e.getLocalizedMessage(), e);
                 Thread.currentThread().interrupt();
             }
         }

@@ -7,10 +7,12 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
 import edu.stanford.nlp.trees.Tree;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class SentimentServiceImpl implements SentimentService {
@@ -19,6 +21,8 @@ public class SentimentServiceImpl implements SentimentService {
 
     @Override
     public int analyzeSentiment(String text) {
+        log.info("Starting analyzing tweet sentiment");
+
         AtomicInteger sentiment = new AtomicInteger(0);
 
         if(text != null && !text.isEmpty()) {
@@ -37,8 +41,9 @@ public class SentimentServiceImpl implements SentimentService {
         }
 
         int mainSentiment = sentiment.get();
-        if (mainSentiment == 2 || mainSentiment > 4 || mainSentiment < 0) {
-            return -2;
+        if (mainSentiment < 0) {
+            log.info("Sentiment is less than 0, skipping the tweet.");
+            return -1;
         }
 
         return mainSentiment;

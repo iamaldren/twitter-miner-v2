@@ -3,12 +3,14 @@ package com.aldren.miner.processor.config.consumer;
 import com.aldren.miner.processor.model.ParsedTweet;
 import com.aldren.miner.processor.service.ProcessorService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 import java.util.function.Consumer;
 
+@Slf4j
 @Configuration
 @AllArgsConstructor
 public class KafkaConsumer {
@@ -17,17 +19,10 @@ public class KafkaConsumer {
 
     @Bean
     public Consumer<List<ParsedTweet>> minedTweets() {
-        return tweets -> {
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> tweets.size()::" + tweets.size());
-            tweets.stream().forEach(tweet -> {
-                if(tweet == null) {
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> tweet is null!!!!!!!!!!!!");
-                } else {
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IAMHERE!!!!!!!!!!!!");
-                    processorService.processTweets(tweet);
-                }
-            });
-        };
+        log.info("Consuming from mined_tweets topic.");
+        return tweets -> tweets.stream()
+                .filter(tweet -> tweet != null)
+                .forEach(tweet -> processorService.processTweets(tweet));
     }
 
 }
