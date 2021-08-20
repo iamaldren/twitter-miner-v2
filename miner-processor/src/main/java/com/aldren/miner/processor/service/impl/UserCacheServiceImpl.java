@@ -20,8 +20,11 @@ public class UserCacheServiceImpl implements UserCacheService {
 
     @Override
     public boolean isUserExceedThreshold(String user) {
-        AtomicBoolean isExceedThreshold = new AtomicBoolean(false);
+        if(!polarityProperties.getThreshold().isEnabled()) {
+            return false;
+        }
 
+        AtomicBoolean isExceedThreshold = new AtomicBoolean(false);
         userRepository.findById(user)
                 .ifPresentOrElse((userEntity) -> {
                     if(userEntity.getThresholdCount() >= polarityProperties.getThreshold().getCount()) {
