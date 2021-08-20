@@ -33,3 +33,8 @@ spring:
           consumer-properties:
             key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+miner:
+  sink:
+    es:
+      host: localhost:9200
