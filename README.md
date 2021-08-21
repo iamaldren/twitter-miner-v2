@@ -12,11 +12,17 @@ This is the java version of the twitter-miner that I created in Python last time
 - Apache Kafka
 - StanfordCoreNLP
 - Elasticsearch
+- Kibana
+- Redis
+
+## StandforCoreNLP Sentiment Point System
+- VERY_POSITIVE = 4
+- POSITIVE = 3
+- NEUTRAL = 2
+- NEGATIVE = 1
+- VERY_NEGATIVE = 0
 
 ## What to improve
 - Use Spring Reactive
 - Improve Data Model generation
 - Unit tests
-
-## Something to think about
-- Should Retweets get counted? Because if it's a retweet, it will still get analyzed due to it falls to another user name.
