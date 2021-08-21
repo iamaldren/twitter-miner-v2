@@ -15,7 +15,7 @@ This is the java version of the twitter-miner that I created in Python last time
 - Kibana
 - Redis
 
-## StandforCoreNLP Sentiment Point System
+## StanfordCoreNLP Sentiment Point System
 - VERY_POSITIVE = 4
 - POSITIVE = 3
 - NEUTRAL = 2
