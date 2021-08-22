@@ -15,6 +15,31 @@ This is the java version of the twitter-miner that I created in Python last time
 - Kibana
 - Redis
 
+## What it is?
+
+Basically, this mini project would mine tweets, based on keyword used, from Twitter. The tweets will then get analyzed for its polarity and identify its sentiment, and these processed tweets would then get ingested to Elasticsearch.
+
+The project is divided into 3 modules. The `source`, `processor`, and `sink`.
+
+### miner-source
+
+This module will be responsible for integrating with Twitter API to mine the tweets, afterwhich it will pass the data down to the `processor` service for sentiment analysis.
+
+As of the moment, the keyword needs to get defined in the application properties file. But it can be improved, like exposing a REST endpoint to input the keyword, and trigger the stream from there.
+
+### miner-processor
+
+This module will consume data from `source` service; it will then analyze the tweet by using the `StanfordCoreNLP` library, this library would be responsible for identifying the tweet's sentiment. After processing, the data will then be streamed down to the `sink` service.
+
+This module could still be improved in terms of processing the data to get a more fine grained results that can be use for data analysis.
+
+#### What were considered?
+- There will be threshold for including the tweet from a specific user. The reason for this is we don't want to spam the data coming from the same user. If we really want to identify the sentiment for a specific topic, it would be better if we collect data from different users.
+- Retweets will be part of the processing, since a retweet is basically a tweet (albeit not his own) coming from a different user.
+
+#### Things to ponder?
+- 
+
 ## StanfordCoreNLP Sentiment Point System
 - VERY_POSITIVE = 4
 - POSITIVE = 3
@@ -26,3 +51,4 @@ This is the java version of the twitter-miner that I created in Python last time
 - Use Spring Reactive
 - Improve Data Model generation
 - Unit tests
+- Keyword input
