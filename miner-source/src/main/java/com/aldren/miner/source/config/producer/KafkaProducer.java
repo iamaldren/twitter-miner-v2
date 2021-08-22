@@ -53,7 +53,11 @@ public class KafkaProducer {
 
             return tweets.stream()
                     .filter(tweet -> tweet.getText() != null && !tweet.getText().isEmpty())
-                    .map(tweet -> tweetMapper.tweetToParsedTweet(tweet))
+                    .map(tweet -> {
+                        ParsedTweet pt = tweetMapper.tweetToParsedTweet(tweet);
+                        pt.setKeyword(minerSourceProperties.getKeyword());
+                        return pt;
+                    })
                     .collect(Collectors.toList());
         };
     }
