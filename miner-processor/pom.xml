@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>11</java.version>
+        <project-directory>${basedir}/..</project-directory>
     </properties>
 
     <dependencies>
