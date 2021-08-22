@@ -2,5 +2,6 @@
   "tweet": "test",
   "user": "john.doe",
   "retweetCount": 100,
-  "favoriteCount": 100
+  "favoriteCount": 100,
+  "keyword": "string"
 }

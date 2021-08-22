@@ -3,6 +3,7 @@
   "user": "john.doe",
   "retweetCount": 100,
   "favoriteCount": 100,
+  "keyword": "string",
   "polarity": 1,
   "sentiment": "Very Positive"
 }
