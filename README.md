@@ -44,12 +44,46 @@ Click [here](https://nlp.stanford.edu/sentiment/) to understand how the `Stanfor
 
 ### miner-sink
 
+This module will consume sentiment data, and will ingest to Elasticsearch. As of the moment, this only supports 1 ES index which is `twitter`. It can be improved to dynamically create/update the index which the data is related too.
+
 ## StanfordCoreNLP Sentiment Point System
 - VERY_POSITIVE = 4
 - POSITIVE = 3
 - NEUTRAL = 2
 - NEGATIVE = 1
 - VERY_NEGATIVE = 0
+
+## Running the program
+
+Do note that this project will be using all default configurations. Just update the configs based on your needs if you want to run this program.
+
+### Prerequisites
+- Java 11
+- Maven
+- Kafka
+- Zookeeper
+- Redis
+- Elasticsearch
+- Kibana (Optional)
+
+This project includes a docker-compose file that contains all the needed services to run the project, excluding Java and Maven (of course). 
+
+If you don't have the services installed, you can run the docker-compose file, by executing the command below (this goes without saying that you must have docker running in your machine):
+```shell
+$ docker-compose up -d
+```
+Make sure that you are in the directory where the `docker-compose` file is located.
+
+### Run via Maven spring-boot plugin
+
+You can run the program by executing the command below. Command must be executed in each module directory where the `pom.xml` file is located.
+```shell
+$ mvn spring-boot:run
+```
+
+### Kibana
+
+You can aggregate the data in Kibana for your analysis.
 
 ## What to improve
 - Use Spring Reactive
