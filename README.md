@@ -83,7 +83,7 @@ $ mvn spring-boot:run
 
 ### Kibana
 
-You can aggregate the data in Kibana for your analysis.
+You can visualize or aggregate the data in Kibana for your analysis.
 
 ## What to improve
 - Use Spring Reactive
