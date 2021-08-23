@@ -38,7 +38,9 @@ This module could still be improved in terms of processing the data to get a mor
 - Retweets will be part of the processing, since a retweet is basically a tweet (albeit not his own) coming from a different user.
 
 #### Things to ponder?
-- 
+- How can we be sure that the hashtag (keyword) is really related to the tweet?
+
+### miner-sink
 
 ## StanfordCoreNLP Sentiment Point System
 - VERY_POSITIVE = 4
