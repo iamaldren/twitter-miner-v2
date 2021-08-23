@@ -25,9 +25,9 @@ miner:
   source:
     twitter:
       consumer:
-        key: "test"
-        secret: "test"
+        key: "dZaiGeiL9fGkLeN8WTPfYCs9Q"
+        secret: "SxNAHB9kmlVQLemb8rtRs9p6pBpbeNsv1vGzOTplwQT4x6E6dw"
       access:
-        token: "test"
-        secret: "test"
-      keyword: "MCU"
+        token: "1100723234146676739-IrvIOLSJIjqJD6dT4scisFQt4xcx2U"
+        secret: "TLkuJbuymB8npmGNJxeSahzkHjF5LWldM2imfagTDxmNd"
+      keyword: "#duterte"

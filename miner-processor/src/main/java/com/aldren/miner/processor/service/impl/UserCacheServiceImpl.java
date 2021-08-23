@@ -21,6 +21,7 @@ public class UserCacheServiceImpl implements UserCacheService {
     @Override
     public boolean isUserExceedThreshold(String user) {
         if(!polarityProperties.getThreshold().isEnabled()) {
+            log.info("Threshold count is currently disabled.");
             return false;
         }
 
