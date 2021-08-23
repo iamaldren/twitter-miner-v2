@@ -33,6 +33,8 @@ This module will consume data from `source` service; it will then analyze the tw
 
 This module could still be improved in terms of processing the data to get a more fine grained results that can be use for data analysis.
 
+Click [here](https://nlp.stanford.edu/sentiment/) to understand how the `StanfordCoreNLP` library works.
+
 #### What were considered?
 - There will be threshold for including the tweet from a specific user. The reason for this is we don't want to spam the data coming from the same user. If we really want to identify the sentiment for a specific topic, it would be better if we collect data from different users.
 - Retweets will be part of the processing, since a retweet is basically a tweet (albeit not his own) coming from a different user.
